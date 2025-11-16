@@ -1,0 +1,367 @@
+<!--
+Sitemap / Arquitectura del sitio (incluida en este archivo):
+- / (Home)
+- /catalogo (Catálogo)
+- /proyectos (Proyectos personalizados)
+- /servicios (Servicios para negocios y B2B)
+- /nosotros (Quiénes somos)
+- /blog (Blog / Inspiración)
+- /faq (Preguntas frecuentes)
+- /contacto (Contacto / Cotizaciones)
+- /producto.html (Plantilla de producto)
+
+Este archivo es un HTML estático de una sola página con secciones que pueden separarse en páginas individuales cuando lo migres a un CMS.
+Incluye: arquitectura, textos listos para usar (ES), y la plantilla HTML/CSS/JS.
+-->
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Vinilos Decorativos Ibagué — Vinilos personalizados para paredes, vidrios, vehículos y negocios. Envíos nacionales e internacionales, instalación profesional y diseños a medida.">
+  <meta name="author" content="Vinilos Decorativos Ibagué">
+  <title>Vinilos Decorativos Ibagué — Decoración en vinilo personalizada</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#ffffff; --text:#1b1b1b; --muted:#6b6b6b; --accent:#70d92a; --accent-2:#0b8793; --card:#f7f7f7;
+      --radius:12px; --max-w:1200px;
+    }
+    *{box-sizing:border-box}
+    body{font-family:'Poppins',system-ui,Arial;background:var(--bg);color:var(--text);margin:0;line-height:1.45}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max-w);margin:0 auto;padding:24px}
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+    .brand{display:flex;gap:14px;align-items:center}
+    .logo{width:56px;height:56px;background:linear-gradient(135deg,var(--accent),var(--accent-2));border-radius:10px;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-family:'Montserrat';font-size:18px}
+    nav{display:flex;gap:14px;align-items:center}
+    nav a{padding:8px 12px;border-radius:8px;color:var(--muted);font-weight:600}
+    .cta{background:var(--accent);color:white;padding:10px 16px;border-radius:10px;font-weight:700}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 460px;gap:28px;align-items:center;padding:32px 0}
+    .hero h1{font-family:'Montserrat';font-size:32px;margin:0 0 12px}
+    .hero p{color:var(--muted);margin:0 0 18px}
+    .hero .actions{display:flex;gap:12px}
+    .card{background:var(--card);padding:18px;border-radius:var(--radius);box-shadow:0 6px 18px rgba(0,0,0,0.04)}
+
+    /* Grid sections */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .service{padding:16px;border-radius:10px;background:white;border:1px solid #efefef}
+    .service h4{margin:8px 0}
+
+    /* Portfolio */
+    .portfolio{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .portfolio-item{background:#fff;border-radius:10px;overflow:hidden;border:1px solid #eee}
+    .portfolio-item img{width:100%;display:block}
+    .portfolio-item .meta{padding:12px}
+
+    /* Responsive */
+    @media(max-width:980px){.hero{grid-template-columns:1fr;}.grid{grid-template-columns:repeat(2,1fr)}.portfolio{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.grid{grid-template-columns:1fr}.portfolio{grid-template-columns:1fr}.hero h1{font-size:26px}.logo{width:44px;height:44px}}
+
+    /* Footer */
+    footer{margin-top:48px;padding:24px 0;border-top:1px solid #eee}
+
+    /* Contact form */
+    form input,form textarea, form select{width:100%;padding:10px;border-radius:8px;border:1px solid #ddd;margin-bottom:10px}
+    button.btn{background:var(--accent);color:white;padding:10px 14px;border-radius:8px;border:none;cursor:pointer}
+
+    /* FAQ */
+    .faq-item{background:linear-gradient(180deg,#fff,#fbfbfb);padding:12px;border-radius:10px;border:1px solid #efefef;margin-bottom:10px}
+
+    /* Small helpers */
+    .muted{color:var(--muted)}
+    .tiny{font-size:13px}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo" href="images/logo.png" type="images/logo.png"></div>
+        <div>
+          <div style="font-weight:700">Vinilos Decorativos Ibagué</div>
+          <div class="tiny muted">Personalizamos tus espacios - Envíos nacionales Colombia</div>
+        </div>
+      </div>
+      <nav aria-label="main navigation">
+        <a href="#catalogo">Catálogo</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto" class="cta">Cotizar ahora</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <div>
+        <h1>Transformamos espacios con vinilos personalizados</h1>
+        <p>Vinilos para paredes, vidrios, vehículos, murales y señalética profesional. Diseño, instalación y garantía. Envíos nacionales.</p>
+        <div class="actions">
+          <a href="#catalogo" class="cta">Ver catálogo</a>
+          <a href="#proyectos" class="muted" style="padding:10px 14px;border-radius:8px;border:1px solid #eee">Cuéntanos tu proyecto</a>
+        </div>
+
+        <div style="margin-top:22px;display:grid;grid-template-columns:repeat(2,1fr);gap:10px">
+          <div class="card tiny">
+            <strong>100% personalizados</strong><br>
+            Material premium y asesoría de diseño.
+          </div>
+          <div class="card tiny">
+            <strong>Instalación profesional</strong><br>
+            Equipos capacitados y garantía de servicio.
+          </div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="card">
+          <h3 style="margin-top:0">Cotiza tu vinilo</h3>
+          <form id="mini-form">
+            <input type="text" name="nombre" placeholder="Nombre completo" required>
+            <input type="tel" name="telefono" placeholder="WhatsApp / Teléfono" required>
+            <select name="categoria"><option value="pared">Vinilo para pared</option><option value="vidrio">Vinilo para vidrio</option><option value="vehiculo">Rotulación vehicular</option><option value="otro">Otro</option></select>
+            <input type="text" name="ciudad" placeholder="Ciudad, País">
+            <button class="btn" type="submit">Enviar cotización</button>
+            <div class="tiny muted" style="margin-top:8px">También puedes escribirnos por WhatsApp: +57 300 000 0000</div>
+          </form>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <h4 style="margin:6px 0">Pagos y Envíos</h4>
+          <div class="tiny muted">Aceptamos transferencias, PSE (Colombia) y pagos internacionales por PayPal/Stripe. Envíos con transportadoras aliadas.</div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- CATALOG -->
+    <section id="catalogo" style="margin-top:28px">
+      <h2>Catálogo</h2>
+      <p class="muted">Explora nuestras categorías. Todos los productos son personalizables en tamaño, color y acabado.</p>
+
+      <div class="grid" style="margin-top:12px">
+        <div class="service">
+          <h4>Vinilos para paredes</h4>
+          <div class="tiny muted">Decoración mural, efectos texturizados y recubrimientos.</div>
+        </div>
+        <div class="service">
+          <h4>Vidrios y privacidad</h4>
+          <div class="tiny muted">Papel esmerilado, privacidad y branding en ventanas.</div>
+        </div>
+        <div class="service">
+          <h4>Rotulación vehicular</h4>
+          <div class="tiny muted">Calcomanías para autos, motos y flotillas empresariales.</div>
+        </div>
+      </div>
+
+      <div style="margin-top:18px" class="portfolio">
+        <article class="portfolio-item">
+          <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=1200&q=60&auto=format&fit=crop" alt="Proyecto sala minimalista">
+          <div class="meta">
+            <strong>Transformación sala - Estilo minimalista</strong>
+            <div class="tiny muted">Vinilo texturizado en pared principal, instalación en 3 horas.</div>
+          </div>
+        </article>
+        <article class="portfolio-item">
+          <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1200&q=60&auto=format&fit=crop" alt="Rotulación fachada tienda">
+          <div class="meta">
+            <strong>Fachada boutique</strong>
+            <div class="tiny muted">Señalética exterior y vinilos en vitrina.</div>
+          </div>
+        </article>
+        <article class="portfolio-item">
+          <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=1200&q=60&auto=format&fit=crop" alt="Murales infantiles">
+          <div class="meta">
+            <strong>Murales infantiles</strong>
+            <div class="tiny muted">Diseño temático y materiales safe para habitaciones.</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROCESO / PROYECTOS -->
+    <section id="proyectos" style="margin-top:28px">
+      <h2>Proyectos personalizados</h2>
+      <p class="muted">Trabajamos proyectos a medida para hogares, oficinas, restaurantes y proyectos corporativos. Te acompañamos desde el diseño hasta la instalación.</p>
+
+      <div style="display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:12px">
+        <div class="card">
+          <h3>Nuestro proceso</h3>
+          <ol>
+            <li><strong>Consulta inicial:</strong> Cuéntanos la idea y el espacio.</li>
+            <li><strong>Propuesta y diseño:</strong> Enviamos mockups y renders 3D.</li>
+            <li><strong>Ajustes:</strong> Revisamos detalles y aprobaciones.</li>
+            <li><strong>Producción:</strong> Corte y preparación del material.</li>
+            <li><strong>Instalación:</strong> Equipo profesional y garantía.</li>
+          </ol>
+          <p class="tiny muted">Proyectos grandes incluyen diseño gratis y seguimiento post-instalación.</p>
+        </div>
+
+        <aside class="card">
+          <h4>Solicita tu proyecto</h4>
+          <form id="project-form">
+            <input type="text" name="nombre" placeholder="Nombre completo" required>
+            <input type="email" name="email" placeholder="Correo" required>
+            <input type="text" name="ciudad" placeholder="Ciudad, País">
+            <input type="text" name="tipo" placeholder="Tipo de proyecto (oficina, hogar, comercio)">
+            <textarea name="descripcion" rows="4" placeholder="Describe tu idea / sube fotos por WhatsApp"></textarea>
+            <button class="btn" type="submit">Enviar proyecto</button>
+          </form>
+        </aside>
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios" style="margin-top:28px">
+      <h2>Servicios</h2>
+      <div class="grid" style="margin-top:12px">
+        <div class="service">
+          <h4>Diseño y Renders 3D</h4>
+          <div class="tiny muted">Visualiza el proyecto antes de producirlo.</div>
+        </div>
+        <div class="service">
+          <h4>Instalación profesional</h4>
+          <div class="tiny muted">Equipos certificados para acabados perfectos.</div>
+        </div>
+        <div class="service">
+          <h4>Soporte postventa</h4>
+          <div class="tiny muted">Garantía y guía de mantenimiento.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOSOTROS -->
+    <section id="nosotros" style="margin-top:28px">
+      <h2>Quiénes somos</h2>
+      <p class="muted">Somos un equipo creativo y técnico con experiencia en decoración, rotulación y diseño gráfico. Nuestro propósito es transformar espacios con soluciones en vinilo personalizadas y duraderas.</p>
+      <div style="display:flex;gap:12px;margin-top:12px">
+        <div style="flex:1" class="card">
+          <h4>Misión</h4>
+          <p class="tiny">Ofrecer soluciones de decoración en vinilo que combinen diseño, calidad y funcionalidad, generando experiencias memorables para nuestros clientes.</p>
+        </div>
+        <div style="flex:1" class="card">
+          <h4>Visión</h4>
+          <p class="tiny">Ser referentes en Latinoamérica en vinilos personalizados, ofreciendo servicio integral y expansión internacional.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOG / INSPIRACION (lista corta) -->
+    <section id="blog" style="margin-top:28px">
+      <h2>Blog / Inspiración</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px">
+        <article class="card">
+          <h4>5 ideas para renovar tu sala sin obra</h4>
+          <p class="tiny muted">Usa vinilos decorativos para transformar paredes y muebles en un fin de semana.</p>
+        </article>
+        <article class="card">
+          <h4>Cómo elegir el vinilo adecuado para ventanas</h4>
+          <p class="tiny muted">Tipos de adhesivos, opacidades y recomendaciones de limpieza.</p>
+        </article>
+        <article class="card">
+          <h4>Rotulación vehicular: ventajas para tu negocio</h4>
+          <p class="tiny muted">Visibilidad y retorno de inversión en branding móvil.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" style="margin-top:28px">
+      <h2>Preguntas frecuentes</h2>
+      <div>
+        <div class="faq-item">
+          <strong>¿Qué tipos de vinilo manejan?</strong>
+          <div class="tiny muted">Vinilo adhesivo polimérico, vinilos impresos con laminado UV, papeles esmerilados para ventanas y vinilo removible para interiores.</div>
+        </div>
+        <div class="faq-item">
+          <strong>¿Los vinilos dañan la pared?</strong>
+          <div class="tiny muted">Si se instalan y retiran correctamente no deben dañar la pintura. Ofrecemos guías y servicio de instalación profesional.</div>
+        </div>
+        <div class="faq-item">
+          <strong>¿Hacen envíos internacionales?</strong>
+          <div class="tiny muted">Sí. Gestionamos logística internacional con aliados y asesoría en trámites de exportación.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" style="margin-top:28px">
+      <h2>Contacto y cotizaciones</h2>
+      <div style="display:grid;grid-template-columns:1fr 360px;gap:18px;margin-top:12px">
+        <div>
+          <p class="muted">Completa el formulario o escríbenos por WhatsApp. Respuesta en menos de 24 horas.</p>
+          <form id="contact-form">
+            <input type="text" name="nombre" placeholder="Nombre completo" required>
+            <input type="email" name="email" placeholder="Correo electrónico" required>
+            <input type="tel" name="telefono" placeholder="WhatsApp / Teléfono" required>
+            <select name="servicio" required>
+              <option value="vinilo_pared">Vinilo para pared</option>
+              <option value="vidrio">Vinilo para vidrio</option>
+              <option value="vehiculo">Rotulación vehicular</option>
+              <option value="proyecto">Proyecto personalizado</option>
+            </select>
+            <textarea name="mensaje" rows="5" placeholder="Describe tu proyecto"></textarea>
+            <button class="btn" type="submit">Enviar mensaje</button>
+          </form>
+        </div>
+
+        <aside class="card">
+          <h4>Contacto directo</h4>
+          <p class="tiny muted"><strong>WhatsApp:</strong> +57 300 000 0000<br><strong>Email:</strong> contacto@vinilosibague.com<br><strong>Dirección:</strong> Ibagué, Tolima - Colombia</p>
+
+          <h4 style="margin-top:12px">Redes</h4>
+          <div style="display:flex;gap:10px;margin-top:6px">
+            <a class="tiny muted" href="#">Instagram</a>
+            <a class="tiny muted" href="#">Facebook</a>
+            <a class="tiny muted" href="#">TikTok</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <footer>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+        <div>
+          <strong>Vinilos Decorativos Ibagué</strong>
+          <div class="tiny muted">© <span id="year"></span> Todos los derechos reservados.</div>
+        </div>
+        <div class="tiny muted">Política de privacidad · Términos · Envíos y devoluciones</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Ejemplo: manejar envio de forms (aqui deberías integrar con tu backend o Zapier)
+    function handleSubmit(e){
+      e.preventDefault();
+      alert('Gracias, tu solicitud ha sido enviada. Nos contactamos por WhatsApp o correo en menos de 24 h.');
+      e.target.reset();
+    }
+    document.getElementById('mini-form').addEventListener('submit', handleSubmit);
+    document.getElementById('project-form').addEventListener('submit', handleSubmit);
+    document.getElementById('contact-form').addEventListener('submit', handleSubmit);
+
+    // Accesibilidad: focus visible
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Tab') document.body.classList.add('user-tabbing');
+    });
+  </script>
+
+  <!--
+  Notas de implementación:
+  - Se puede separar en múltiples páginas: mover secciones a archivos /catalogo, /proyectos, /servicios, /nosotros, /blog, /faq, /contacto.
+  - Integraciones recomendadas: formulario -> Zapier / Make / webhook a CRM (HubSpot, Pipedrive). Pasarela de pagos: Stripe o PayU (Colombia).
+  - Para e-commerce completo migrar a WooCommerce (WordPress) o Shopify con esta estructura visual.
+  - Traducción: crear versiones /en con los mismos slugs y hreflang para SEO internacional.
+  - Imágenes: reemplazar las URLs de ejemplo por fotos propias y optimizadas (webp).
+  -->
+</body>
+</html>

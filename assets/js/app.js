@@ -44,4 +44,24 @@ document.addEventListener('DOMContentLoaded', function() {
       if(target){ e.preventDefault(); window.scrollTo({ top: target.offsetTop-18, behavior:'smooth' }); }
     });
   });
+  const menuBtn = document.getElementById("menuToggle");
+const menu = document.getElementById("mainMenu");
+
+menuBtn.addEventListener("click", () => {
+    menu.classList.toggle("open");
+    menu.classList.toggle("closed");
+  });
+  gsap.registerPlugin(ScrollTrigger);
+
+gsap.from(".testimonio-card", {
+    scrollTrigger: {
+        trigger: ".testimonios",
+        start: "top 80%",
+    },
+    opacity: 0,
+    y: 40,
+    duration: 0.7,
+    stagger: 0.2
+});
+
 });

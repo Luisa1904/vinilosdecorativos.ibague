@@ -57,3 +57,128 @@ button.btn{background:var(--accent);color:white;padding:10px 14px;border-radius:
 /* small */
 .muted{color:var(--muted)}
 .tiny{font-size:13px}
+
+/* Layout general */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: #ffffff;
+    position: fixed;
+    width: 100%;
+    z-index: 2000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.menu-btn {
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none; /* se activa en móvil */
+}
+
+/* MENU */
+.nav {
+    display: flex;
+    gap: 25px;
+}
+
+.nav a {
+    text-decoration: none;
+    font-size: 17px;
+    color: #222;
+}
+
+/* --- RESPONSIVE --- */
+@media(max-width: 768px) {
+
+    .menu-btn {
+        display: block;
+    }
+
+    .nav {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 70%;
+        background: #fff;
+        flex-direction: column;
+        gap: 18px;
+        border-left: 1px solid #eee;
+        box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+
+        /* animación de apertura */
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height .4s ease;
+    }
+
+    .nav.open {
+        max-height: 400px;
+    }
+
+    .nav.closed {
+        max-height: 0;
+    }
+}
+.testimonios {
+    padding: 80px 20px;
+    background: #fafafa;
+    text-align: center;
+}
+
+.testimonios h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #111;
+}
+
+.testimonios-container {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.testimonio-card {
+    background: white;
+    width: 300px;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.testimonio-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.testimonio-card img {
+    width: 85px;
+    height: 85px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.estrellas {
+    color: #F8C200;
+    font-size: 22px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.testimonio-card p {
+    font-size: 15px;
+    color: #444;
+}
+
+/* Responsive */
+@media(max-width: 768px) {
+    .testimonio-card {
+        width: 90%;
+    }
+}

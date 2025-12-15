@@ -63,5 +63,40 @@ gsap.from(".testimonio-card", {
     duration: 0.7,
     stagger: 0.2
 });
+gsap.registerPlugin(ScrollTrigger);
 
+
+gsap.utils.toArray('.fade-on-scroll').forEach(el=>{
+gsap.to(el,{
+opacity:1,
+y:0,
+duration:0.8,
+ease:'power2.out',
+scrollTrigger:{trigger:el,start:'top 85%'}
+})
+})
+
+
+// Slider automático
+const slides=document.querySelectorAll('.slider img');
+let current=0;
+if(slides.length>1){
+setInterval(()=>{
+const next=(current+1)%slides.length;
+gsap.to(slides[current],{opacity:0,duration:0.8});
+gsap.to(slides[next],{opacity:1,duration:0.8});
+current=next;
+},4000);
+}
+
+
+// Contador
+document.querySelectorAll('.counter').forEach(counter=>{
+gsap.fromTo(counter,{innerText:0},{
+innerText:counter.dataset.target,
+duration:1.6,
+snap:{innerText:1},
+scrollTrigger:{trigger:counter,start:'top 85%'}
+})
+})
 });

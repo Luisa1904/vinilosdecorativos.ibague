@@ -100,3 +100,25 @@ scrollTrigger:{trigger:counter,start:'top 85%'}
 })
 })
 });
+
+// ===============================
+// FILTRO INTERACTIVO DE BLOG (INDEX)
+// ===============================
+document.querySelectorAll('[data-filter]').forEach(btn=>{
+btn.addEventListener('click',()=>{
+const filter=btn.dataset.filter;
+document.querySelectorAll('.blog-card').forEach(card=>{
+card.style.display = filter==='all' || card.dataset.category===filter ? 'block':'none';
+})
+})
+});
+
+
+// ===============================
+// TRACKING DE INTERACCIONES (CTA)
+// ===============================
+document.querySelectorAll('.btn').forEach(btn=>{
+btn.addEventListener('click',()=>{
+console.log('CTA Blog clickeado:', btn.textContent);
+})
+});

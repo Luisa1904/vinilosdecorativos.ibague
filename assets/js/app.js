@@ -122,3 +122,60 @@ btn.addEventListener('click',()=>{
 console.log('CTA Blog clickeado:', btn.textContent);
 })
 });
+
+// ===================================
+// BLOG – AJUSTES RESPONSIVE JS
+// ===================================
+
+// Detecta móvil
+const isMobile = window.innerWidth < 768;
+
+// Reduce animaciones en móvil (mejora INP)
+if (isMobile && typeof gsap !== 'undefined') {
+  gsap.globalTimeline.timeScale(1.3);
+}
+
+// Scroll suave solo en desktop
+if (!isMobile) {
+  document.querySelectorAll('.blog-card a').forEach(link => {
+    link.addEventListener('mouseenter', () => {
+      link.style.transform = 'translateY(-4px)';
+    });
+    link.addEventListener('mouseleave', () => {
+      link.style.transform = 'translateY(0)';
+    });
+  });
+}
+
+  // Slider automático para cambiar imágenes
+  const slides = document.querySelectorAll('.slider img');
+  let current = 0;
+
+  function changeImage() {
+    const next = (current + 1) % slides.length;
+    gsap.to(slides[current], { opacity: 0, duration: 0.8 });
+    gsap.to(slides[next], { opacity: 1, duration: 0.8 });
+    current = next;
+  }
+
+  if (slides.length > 1) {
+    setInterval(changeImage, 4000); // Cambiar cada 4 segundos
+  }
+
+  // Iniciar con la primera imagen visible
+  gsap.from(slides[0], { opacity: 1, duration: 0.8 });
+
+  gsap.utils.toArray(
+  '.content-block, .info-card, .highlight'
+).forEach(el => {
+  gsap.from(el, {
+    opacity: 0,
+    y: 30,
+    duration: 0.7,
+    ease: 'power2.out',
+    scrollTrigger: {
+      trigger: el,
+      start: 'top 85%'
+    }
+  });
+});

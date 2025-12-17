@@ -599,3 +599,38 @@ z-index:2;
     font-size: 16px;
   }
 }
+
+/* =========================
+   LOGO HEADER
+========================= */
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logo img {
+  width: 60px;
+  height: auto;
+  display: block;
+}
+
+.logo-text {
+  font-family: 'Montserrat';
+  font-weight: 800;
+  font-size: 20px;
+  color: inherit; /* mantiene colores actuales */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .logo img {
+    width: 48px;
+  }
+
+  .logo-text {
+    font-size: 18px;
+  }
+}

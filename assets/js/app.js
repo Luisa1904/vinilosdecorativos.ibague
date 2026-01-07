@@ -179,3 +179,32 @@ if (!isMobile) {
     }
   });
 });
+
+document.getElementById("cotizacionForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const nombre = document.getElementById("nombre").value;
+  const cliente = document.getElementById("cliente").value;
+  const producto = document.getElementById("producto").value;
+  const cantidad = document.getElementById("cantidad").value;
+  const medidas = document.getElementById("medidas").value;
+  const observaciones = document.getElementById("observaciones").value || "Sin observaciones";
+
+  const telefonoWhatsApp = "573041010263"; // Cambia por tu número
+
+  const mensaje = `
+Hola Vinilos Decorativos Ibagué, quiero una cotización:
+
+Mi nombre es: ${nombre}
+Tipo de cliente: ${cliente}
+Producto: ${producto}
+Cantidad: ${cantidad}
+Medidas: ${medidas}
+Observaciones: ${observaciones || "Sin observaciones"}
+`;
+
+  const url = `https://wa.me/${telefonoWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+
+  window.open(url, "_blank");
+});
+
